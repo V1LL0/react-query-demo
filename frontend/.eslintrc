@@ -1,0 +1,74 @@
+{
+  "extends": [
+    "airbnb-base",
+    "plugin:prettier/recommended",
+    "plugin:react/recommended"
+  ],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true,
+      "legacyDecorators": true
+    }
+  },
+
+  "env": {
+    "browser": true,
+    "jest": true
+  },
+
+  "plugins": [
+    "react"
+  ],
+
+  "rules": {
+    "one-var": "off",
+    "prefer-const": "error",
+    "no-unused-vars": "warn",
+    "no-underscore-dangle": "off",
+    "no-plusplus": "off",
+    "no-param-reassign": "warn",
+    "no-useless-escape": "warn",
+    "no-restricted-syntax": [
+      "error",
+      "LabeledStatement",
+      "WithStatement"
+    ],
+    "radix": "off",
+    "no-shadow": "warn",
+    "quotes": [2, "single", "avoid-escape"],
+    "consistent-return": "warn",
+    "default-case": "warn",
+    "import/prefer-default-export": "off",
+    "import/extensions": "off",
+    "import/no-unresolved": "error",
+    "react/prop-types": "warn",
+    "no-console": "warn",
+    "import/first": "warn",
+    "react/no-string-refs": "warn",
+    "no-case-declarations": "warn",
+    "camelcase": "off",
+    "spaced-comment": ["error", "always", { "block": { "balanced": true } }],
+    "react/jsx-fragments": ["error", "syntax"],
+    "react/jsx-boolean-value": ["error", "never"],
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+    "brace-style": ["error", "1tbs", { "allowSingleLine": true }],
+    "arrow-body-style": ["error", "as-needed"],
+    "comma-dangle": ["error", {
+      "arrays": "always-multiline",
+      "objects": "always-multiline",
+      "imports": "always-multiline",
+      "exports": "always-multiline",
+      "functions": "ignore"
+    }],
+    "react/react-in-jsx-scope": "off"
+  },
+
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["./", "./src"]
+      }
+    }
+  }
+}

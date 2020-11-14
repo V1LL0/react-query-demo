@@ -1,0 +1,56 @@
+{
+  "extends": [
+    "airbnb-base"
+  ],
+
+  "env": {
+    "node": true,
+    "jest": true
+  },
+
+  "rules": {
+    "one-var": "off",
+    "prefer-const": "error",
+    "no-unused-vars": "warn",
+    "no-underscore-dangle": "off",
+    "no-plusplus": "off",
+    "no-param-reassign": "warn",
+    "no-useless-escape": "warn",
+    "no-restricted-syntax": [
+      "error",
+      "LabeledStatement",
+      "WithStatement"
+    ],
+    "radix": "off",
+    "no-shadow": "warn",
+    "quotes": [2, "single", "avoid-escape"],
+    "consistent-return": "warn",
+    "default-case": "warn",
+    "import/prefer-default-export": "off",
+    "import/extensions": "off",
+    "import/no-unresolved": "error",
+    "no-console": "warn",
+    "import/first": "warn",
+    "no-case-declarations": "warn",
+    "camelcase": "off",
+    "spaced-comment": ["error", "always", { "block": { "balanced": true } }],
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+    "brace-style": ["error", "1tbs", { "allowSingleLine": true }],
+    "arrow-body-style": ["error", "as-needed"],
+    "comma-dangle": ["error", {
+      "arrays": "always-multiline",
+      "objects": "always-multiline",
+      "imports": "always-multiline",
+      "exports": "always-multiline",
+      "functions": "ignore"
+    }]
+  },
+
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["./", "./src"]
+      }
+    }
+  }
+}
