@@ -5,7 +5,8 @@
     "baseUrl": "./src",
     "paths": {
       "components/*": ["./components/*"],
-      "hooks/*": ["./hooks/*"]
+      "hooks/*": ["./hooks/*"],
+      "consts" : ["./consts.js"]
     },
     "moduleResolution": "node"
   },
