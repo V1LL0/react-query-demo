@@ -1,4 +1,4 @@
-import { useMutation } from 'react-query';
+import { queryCache, useMutation } from 'react-query';
 import axios from '../axiosInstance';
 
 const deleteNote = async (noteId) => {
@@ -7,5 +7,7 @@ const deleteNote = async (noteId) => {
 };
 
 export default function useDeleteNote() {
-  return useMutation(deleteNote, {});
+  return useMutation(deleteNote, {
+    onSettled: () => queryCache.invalidateQueries('notes'),
+  });
 }

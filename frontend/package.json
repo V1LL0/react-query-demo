@@ -9,11 +9,13 @@
     "@testing-library/user-event": "^12.1.10",
     "antd": "^4.8.0",
     "axios": "^0.21.0",
+    "history": "^5.0.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-query": "^2.26.2",
     "react-scripts": "4.0.0",
+    "universal-router": "^9.0.1",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
