@@ -13,6 +13,7 @@ app.use((req, res, next) => {
     'Access-Control-Allow-Headers',
     'Origin, X-Requested-With, Content-Type, Accept'
   );
+  res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
   next();
 });
 
@@ -99,8 +100,8 @@ app.put('/notes/:id', async (req, res) => {
 });
 
 app.delete('/notes/:id', async (req, res) => {
+  console.log({ req });
   const { id } = req.params;
-
   try {
     const result = await db.run('DELETE FROM notes WHERE id = ?', id);
     return res.json(result);

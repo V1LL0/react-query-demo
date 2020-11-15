@@ -9,7 +9,9 @@ export default function useDeleteNote() {
   const mutate = React.useCallback(async (noteId) => {
     setState({ isLoading: true });
     try {
-      await axios.delete(`/notes/${noteId}`).then((res) => res.data);
+      await axios
+        .delete(`/notes/${noteId}`, { data: {} })
+        .then((res) => res.data);
       setState({ isSuccess: true });
     } catch (error) {
       setState({ isError: true, error });

@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { createContext, useContext } from 'react';
 import axios from '../axiosInstance';
 
-export default function useNotes() {
+export const Context = createContext({
+  isLoading: true,
+});
+
+let fetchNotes;
+export const NotesStore = ({ children }) => {
   const [state, setState] = React.useReducer((_, action) => action, {
     isLoading: true,
   });
 
-  const fetch = async () => {
-    setState({ isLoading: true });
+  fetchNotes = async () => {
+    setState({ data: state.data, isLoading: true });
     try {
       const data = await axios.get('/notes').then((res) => res.data);
       setState({ isSuccess: true, data });
@@ -17,11 +22,15 @@ export default function useNotes() {
   };
 
   React.useEffect(() => {
-    fetch();
+    fetchNotes();
   }, []);
 
-  return {
-    ...state,
-    fetch,
-  };
+  return (
+    <Context.Provider value={[state, setState]}>{children}</Context.Provider>
+  );
+};
+
+export default function useNotes() {
+  const [state] = useContext(Context);
+  return { ...state, fetch: fetchNotes };
 }
