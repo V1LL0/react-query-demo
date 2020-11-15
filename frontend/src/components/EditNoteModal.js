@@ -9,7 +9,7 @@ const EditNoteModal = ({ visible, note, onEdit, onCancel }) => {
 
   const handleEdit = async () => {
     const values = form.getFieldsValue();
-    await editNote({ ...values, id: note.id });
+    editNote({ ...values, id: note.id });
     onEdit();
   };
 
