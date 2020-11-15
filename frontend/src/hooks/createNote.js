@@ -1,20 +1,16 @@
-import React from 'react';
+import { useMutation } from 'react-query';
 import axios from '../axiosInstance';
 
+const createNote = async (note) => {
+  const { data } = await axios.post('/notes', note);
+  return data;
+};
+
 export default function useCreateNote() {
-  const [state, setState] = React.useReducer((_, action) => action, {
-    isIdle: true,
+  return useMutation(createNote, {
+    // onMutate:
+    // onSuccess:
+    // onError:
+    // onSettled:
   });
-
-  const mutate = React.useCallback(async (values) => {
-    setState({ isLoading: true });
-    try {
-      const data = axios.post('/notes', values).then((res) => res.data);
-      setState({ isSuccess: true, data });
-    } catch (error) {
-      setState({ isError: true, error });
-    }
-  }, []);
-
-  return [mutate, state];
 }
