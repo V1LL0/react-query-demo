@@ -1,4 +1,4 @@
-import { useMutation } from 'react-query';
+import { useMutation, queryCache } from 'react-query';
 import axios from '../axiosInstance';
 
 const createNote = async (note) => {
@@ -11,6 +11,6 @@ export default function useCreateNote() {
     // onMutate:
     // onSuccess:
     // onError:
-    // onSettled:
+    onSettled: () => queryCache.invalidateQueries('notes'),
   });
 }

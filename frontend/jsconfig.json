@@ -6,7 +6,8 @@
     "paths": {
       "components/*": ["./components/*"],
       "hooks/*": ["./hooks/*"],
-      "consts" : ["./consts.js"]
+      "consts" : ["./consts.js"],
+      "historyInstance" : ["./historyInstance.js"]
     },
     "moduleResolution": "node"
   },

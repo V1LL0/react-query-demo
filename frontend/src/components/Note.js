@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types';
 import { Card, Skeleton, Popconfirm } from 'antd';
 import { EditFilled, DeleteFilled } from '@ant-design/icons';
+import Link from 'components/Link';
 
 const Note = ({
   children,
   loading,
-  title,
+  note,
   onEditClick,
   onDeleteClick,
   ...props
@@ -38,17 +39,17 @@ const Note = ({
       loading ? (
         <Skeleton active title={{ width: '80%' }} paragraph={{ rows: 0 }} />
       ) : (
-        title
+        <Link title={note.title} link={`/${note.id}`} />
       )
     }
   >
-    {children}
+    {note.text}
   </Card>
 );
 
 Note.propTypes = {
   children: PropTypes.any,
-  title: PropTypes.any,
+  note: PropTypes.object,
   loading: PropTypes.bool,
   onEditClick: PropTypes.func,
   onDeleteClick: PropTypes.func,

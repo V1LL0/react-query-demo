@@ -1,11 +1,11 @@
+import PropTypes from 'prop-types';
 import './App.css';
 import 'antd/dist/antd.css';
 import { Layout } from 'antd';
 import Sidebar from 'components/Sidebar';
-import NotesList from 'components/NotesList';
 import { COLORS } from 'consts';
 
-function App() {
+function App({ page }) {
   return (
     <Layout className="app-container" style={{ height: '100vh' }}>
       <Sidebar />
@@ -19,11 +19,15 @@ function App() {
             padding: '3rem',
           }}
         >
-          <NotesList />
+          {page && page.component}
         </Layout.Content>
       </Layout>
     </Layout>
   );
 }
+
+App.propTypes = {
+  page: PropTypes.object,
+};
 
 export default App;

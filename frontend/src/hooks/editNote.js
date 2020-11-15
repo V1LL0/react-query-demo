@@ -1,4 +1,4 @@
-import { useMutation } from 'react-query';
+import { queryCache, useMutation } from 'react-query';
 import axios from '../axiosInstance';
 
 const saveNote = async (note) => {
@@ -7,5 +7,7 @@ const saveNote = async (note) => {
 };
 
 export default function useSaveNote() {
-  return useMutation(saveNote, {});
+  return useMutation(saveNote, {
+    onSettled: () => queryCache.invalidateQueries('notes'),
+  });
 }

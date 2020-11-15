@@ -58,6 +58,12 @@ app.get('/notes', async (req, res) => {
   return res.json(result);
 });
 
+app.get('/notes/:id', async (req, res) => {
+  // await sleep(2000);
+  const result = await db.get('SELECT * FROM notes where id = ?', req.params.id);
+  return res.json(result);
+});
+
 app.post('/notes', async (req, res) => {
   const { title, text } = req.body;
   if (!title && !text) {
@@ -100,7 +106,6 @@ app.put('/notes/:id', async (req, res) => {
 });
 
 app.delete('/notes/:id', async (req, res) => {
-  console.log({ req });
   const { id } = req.params;
   try {
     const result = await db.run('DELETE FROM notes WHERE id = ?', id);
