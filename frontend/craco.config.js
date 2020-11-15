@@ -2,16 +2,13 @@ const CracoEslintWebpackPlugin = require('craco-eslint-webpack-plugin');
 
 module.exports = {
   babel: {
-    presets: [
-      '@babel/preset-env',
-      '@babel/preset-react'
-    ],
+    presets: ['@babel/preset-env', '@babel/preset-react'],
     plugins: [
       [
         '@babel/plugin-transform-react-jsx',
         {
-          'runtime': 'automatic'
-        }
+          runtime: 'automatic',
+        },
       ],
       [
         '@babel/plugin-transform-runtime',
@@ -27,7 +24,6 @@ module.exports = {
     {
       plugin: CracoEslintWebpackPlugin,
       options: {
-        skipPreflightCheck: false,
         eslintOptions: {
           files: 'src/**/*.{js,jsx,ts,tsx}',
           lintDirtyModulesOnly: true,
