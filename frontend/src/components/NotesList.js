@@ -9,7 +9,12 @@ import EditNoteModal from 'components/EditNoteModal';
 import Spinner from 'components/Spinner';
 
 const NotesList = () => {
-  const { data: notes = [], isLoading, fetch: refetchNotes } = useNotes();
+  const {
+    data: notes = [],
+    refetch: refetchNotes,
+    status,
+    isFetching,
+  } = useNotes();
   const [deleteNote, deleteNoteInfo] = useDeleteNote();
 
   const [createModalIsVisible, setCreateModalIsVisible] = useState(false);
@@ -35,7 +40,7 @@ const NotesList = () => {
     setEditModalIsVisible(false);
   };
 
-  return isLoading ? (
+  return status === 'loading' ? (
     <Spinner />
   ) : (
     <>

@@ -1,22 +1,11 @@
-import React from 'react';
+import { useMutation } from 'react-query';
 import axios from '../axiosInstance';
 
+const deleteNote = async (noteId) => {
+  const { data } = await axios.delete(`/notes/${noteId}`);
+  return data;
+};
+
 export default function useDeleteNote() {
-  const [state, setState] = React.useReducer((_, action) => action, {
-    isIdle: true,
-  });
-
-  const mutate = React.useCallback(async (noteId) => {
-    setState({ isLoading: true });
-    try {
-      await axios
-        .delete(`/notes/${noteId}`, { data: {} })
-        .then((res) => res.data);
-      setState({ isSuccess: true });
-    } catch (error) {
-      setState({ isError: true, error });
-    }
-  }, []);
-
-  return [mutate, state];
+  return useMutation(deleteNote, {});
 }

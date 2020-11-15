@@ -1,22 +1,11 @@
-import React from 'react';
+import { useMutation } from 'react-query';
 import axios from '../axiosInstance';
 
+const saveNote = async (note) => {
+  const { data } = await axios.put(`/notes/${note.id}`, note);
+  return data;
+};
+
 export default function useSaveNote() {
-  const [state, setState] = React.useReducer((_, action) => action, {
-    isIdle: true,
-  });
-
-  const mutate = React.useCallback(async (values) => {
-    setState({ isLoading: true });
-    try {
-      const data = await axios
-        .put(`/notes/${values.id}`, values)
-        .then((res) => res.data);
-      setState({ isSuccess: true, data });
-    } catch (error) {
-      setState({ isError: true, error });
-    }
-  }, []);
-
-  return [mutate, state];
+  return useMutation(saveNote, {});
 }
