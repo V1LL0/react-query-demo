@@ -8,7 +8,7 @@ const CreateNoteModal = ({ visible, onCreate, onCancel }) => {
 
   const handleCreate = async () => {
     const values = form.getFieldsValue();
-    await createNote(values);
+    createNote(values);
     onCreate();
   };
 

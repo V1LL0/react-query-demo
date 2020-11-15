@@ -53,13 +53,13 @@ const sendError = (err, res) => res.status(500).json({
 const sleep = (time) => new Promise((resolve) => setTimeout(resolve, time));
 
 app.get('/notes', async (req, res) => {
-  // await sleep(2000);
+  // await sleep(1000);
   const result = await db.all('SELECT * FROM notes');
   return res.json(result);
 });
 
 app.get('/notes/:id', async (req, res) => {
-  // await sleep(2000);
+  // await sleep(1000);
   const result = await db.get('SELECT * FROM notes where id = ?', req.params.id);
   return res.json(result);
 });
@@ -85,11 +85,13 @@ app.post('/notes', async (req, res) => {
 });
 
 app.put('/notes/:id', async (req, res) => {
+  // await sleep(1000);
+  // return sendError(new Error('something went wrong!'), res);
   const { id } = req.params;
   const { title, text } = req.body;
 
   if (!title && !text) {
-    return sendError(new Error('Send me a note'));
+    return sendError(new Error('Send me a note'), res);
   }
 
   try {
